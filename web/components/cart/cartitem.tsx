@@ -3,7 +3,6 @@ import axios from 'axios';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { Trash2, Minus, Plus } from 'lucide-react';
-import { useCartStore } from '@/zustant/useStore';
 const url=process.env.NEXT_PUBLIC_API_URL
 interface CartItemProps {
   value: {
