@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const PORT=4000
+const PORT = process.env.PORT || 4000;
 const MONGO_URI="mongodb+srv://arshinreji12:Tbmn12ombiRCDumT@cluster0.juvskn1.mongodb.net/shope?retryWrites=true&w=majority&appName=Cluster0"
 
 
@@ -250,6 +250,6 @@ app.put("/api/carts/:id", async (req, res) => {
 //     res.status(500).json({ error: "Failed to decrease product stock" });
 //   }
 // });
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
