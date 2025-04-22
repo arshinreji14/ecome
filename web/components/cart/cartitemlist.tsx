@@ -5,7 +5,7 @@ import CartItem from "./cartitem";
 import Checkout from "../checkout/checkout";
 import Link from "next/link";
 import { ArrowBigLeft,} from "lucide-react";
-
+const url=process.env.NEXT_PUBLIC_API_URL
 export default function Cartitemlist() {
   const [data, setData] = useState<Datas[]>([]);
   const [showCheckout, setCheckout] = useState(false);
@@ -15,7 +15,7 @@ export default function Cartitemlist() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch(`http://localhost:4000/api/carts`);
+        const response = await fetch(`${url}/api/carts`);
         const fetchedData = await response.json();
         if (Array.isArray(fetchedData)) {
           setData(fetchedData);

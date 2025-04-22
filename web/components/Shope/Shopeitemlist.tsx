@@ -3,14 +3,16 @@ import ShopeCardItem from './shopeitem';
 import { useEffect, useState } from 'react';
 import Datas from '@/app/schema/data';
 import Link from 'next/link';
+
 const page=1
 const per_page=10
+const url=process.env.NEXT_PUBLIC_API_URL
 export default function ShopeItemlist (){
   const [data,setData]=useState<Datas[]>([])
   useEffect(()=>{
     async function fetchdata(){
       try{
-        const response= await fetch(`http://localhost:4000/api/products/${per_page}/${page}`)
+        const response= await fetch(`${url}/api/products/${per_page}/${page}`)
         const fetchedata=await response.json()
         setData(fetchedata)
       }

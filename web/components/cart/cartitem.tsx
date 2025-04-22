@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { Trash2, Minus, Plus } from 'lucide-react';
 import { useCartStore } from '@/zustant/useStore';
+const url=process.env.NEXT_PUBLIC_API_URL
 interface CartItemProps {
   value: {
     _id: string;
@@ -29,7 +30,7 @@ const[total,setTotal]=useState<number>(0)
     } 
     
     try {
-      const response = await axios.delete(`http://localhost:4000/api/carts/${value._id}`);
+      const response = await axios.delete(`${url}/api/carts/${value._id}`);
       console.log('API response:', response.data);
       onRemove(value._id);
     } catch (error) {

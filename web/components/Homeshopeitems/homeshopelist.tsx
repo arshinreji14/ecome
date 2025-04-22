@@ -5,12 +5,13 @@ import Link from 'next/link';
 import ShopCardItem from '../Shope/shopeitem';
 const page=1
 const per_page=5
+const url=process.env.NEXT_PUBLIC_API_URL
 export default function HomeShopeItemlist (){
   const [data,setData]=useState<Datas[]>([])
   useEffect(()=>{
     async function fetchdata(){
       try{
-        const response= await fetch(`http://localhost:4000/api/products/${per_page}/${page}`)
+        const response= await fetch(`${url}/api/products/${per_page}/${page}`)
         const fetchedata=await response.json()
         setData(fetchedata)
       }

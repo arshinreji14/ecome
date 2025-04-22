@@ -16,8 +16,9 @@ interface Product {
 type ShopCardItemProps = {
   value: Product;
 };
-
+const url=process.env.NEXT_PUBLIC_API_URL
 const ShopCardItem: React.FC<ShopCardItemProps> = ({ value }) => {
+
   const [isHovering, setIsHovering] = useState(false);
   const handleAddToCart = async () => {
     const cartItem = {
@@ -31,7 +32,7 @@ const ShopCardItem: React.FC<ShopCardItemProps> = ({ value }) => {
     }; // Add quantity to the cart item
     console .log('Adding to cart:', cartItem); // Debugging line
     try {
-      const response = await axios.post('http://localhost:4000/api/carts', cartItem);
+      const response = await axios.post(`${url}/api/carts`, cartItem);
       console.log('API response:', response.data); // Handle successful response (optional)
     } catch (error) {
       console.error('Error adding to cart (API):', error); // Handle errors
